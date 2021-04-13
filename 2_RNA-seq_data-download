@@ -15,5 +15,8 @@ $ ls -lh *fastq.gz | wc -l
 
 ・DLから漏れたものはファイルIDを個別に指定してfasterq-dumpでDL（SRR4423846だったら）
 
+$ fasterq-dump —gzip --split-files SRR4423846 -p
 
-$ $ fasterq-dump —gzip --split-files SRR4423846 -p
+
+トラブルシューティング
+$ brew upgrade sratoolkit
