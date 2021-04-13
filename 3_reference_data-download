@@ -1,0 +1,40 @@
+・refデータを保存するdirを作成、移動
+
+$ mkdir -p ~/Documents/husingSRP091581/ref
+$ cd ~/Documents/husingSRP091581/ref
+
+・ensenbleにアクセス
+
+http://ftp.ensembl.org/pub/release-103/fasta/mus_musculus/dna/
+で
+Mus_musculus.GRCm39.dna.primary_assembly.fa.gz     22-Dec-2020 00:58           806418890
+をGUiでDL
+
+lftp http://ftp.ensembl.org/pub/release-103/gtf/mus_musculus/
+
+ls
+
+get Mus_musculus.GRCm39.103.gtf.gz 
+
+exit
+
+一応cdnaも
+
+・Rコンソールを立ち上げ~/Documents/husingSRP091581/refのdirに移動
+対象種のDataset名を確認、対象種の遺伝子IDと遺伝子名の対応情報を取得
+
+library(dplyr)
+ensembl = biomaRt::useEnsembl(biomart="ensembl")
+biomaRt::listDatasets(ensembl)
+mart <- biomaRt::useMart(biomart = "ENSEMBL_MART_ENSEMBL", dataset = "mmusculus_gene_ensembl", host = 'ensembl.org')
+t2g <- biomaRt::getBM(attributes = c("ensembl_transcript_id", "ensembl_gene_id", "external_gene_name"), mart = mart)
+t2g <- dplyr::rename(t2g, target_id = ensembl_transcript_id, ens_gene = ensembl_gene_id, ext_gene = external_gene_name)
+t2g[t2g[,3] == "","ext_gene"] <- "NA"
+
+内容の確認
+head(t2g)
+
+保存する
+write.table(t2g, "target2gene.txt", sep="\t",quote=F,row.names=F)
+
+R終了、保存
