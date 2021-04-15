@@ -19,7 +19,7 @@ $ ~/Documents/husingSRP091581/tools/STAR-2.7.8a/bin/MacOSX_x86_64/STAR --runMode
 
 $ mkdir -p ~/Documents/husingSRP091581/STAR
 $ cd ~/Documents/husingSRP091581/STAR
-今回は
+今回はsingle-endなので下のように改変
 $ for sample in `ls ../seq/*fastq.gz | xargs basename | cut -f1 -d"_" | uniq`; do echo mapping:${sample}; ../tools/STAR-2.7.8a/bin/MacOSX_x86_64/STAR --runMode alignReads --genomeDir ../ref/STAR_reference --readFilesCommand gunzip -c --readFilesIn ../seq/${sample}  --outSAMtype BAM SortedByCoordinate --runThreadN 4 --quantMode TranscriptomeSAM --outFileNamePrefix ${sample};done; echo finished
 
 
