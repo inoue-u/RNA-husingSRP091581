@@ -19,9 +19,8 @@ $ ~/Documents/husingSRP091581/tools/STAR-2.7.8a/bin/MacOSX_x86_64/STAR --runMode
 
 $ mkdir -p ~/Documents/husingSRP091581/STAR
 $ cd ~/Documents/husingSRP091581/STAR
-$ for sample in `ls ../seq/*fastq.gz | xargs basename | cut -f1 -d"_" | uniq`; do echo mapping:${sample}; ../tools/STAR-2.7.8a/bin/MacOSX_x86_64/STAR --runMode alignReads --genomeDir ../ref/STAR_reference --readFilesCommand gunzip -c --readFilesIn ../seq/${sample}fastq.gz --outSAMtype BAM SortedByCoordinate --runThreadN 4 --quantMode TranscriptomeSAM --outFileNamePrefix ${sample};done; echo finished
-個別にマッピングするときは↓（例えばSRR4423846では）
-$ ~/Documents/expression/tools/STAR-2.7.8a/bin/MacOSX_x86_64/STAR --runMode alignReads --genomeDir ../ref/STAR_reference --readFilesCommand gunzip -c --readFilesIn ../seq/SRR4423846.fastq.gz --outSAMtype BAM SortedByCoordinate --runThreadN 4 --outFileNamePrefix SRR4423846 --quantMode TranscriptomeSAM
+$ for sample in `ls ../seq/*fastq.gz | xargs basename | cut -f1 -d"_" | uniq`; do echo mapping:${sample}; ../tools/STAR-2.7.8a/bin/MacOSX_x86_64/STAR --runMode alignReads --genomeDir ../ref/STAR_reference --readFilesCommand gunzip -c --readFilesIn ../seq/${sample}_1.fastq.gz ../seq/${sample}_2.fastq.gz --outSAMtype BAM SortedByCoordinate --runThreadN 4 --quantMode TranscriptomeSAM --outFileNamePrefix ${sample};done; echo finished 
+
 
 ・source codeを ~/Documents/expression/tools にダウンロードしたのちファイルを解凍（https://deweylab.github.io/RSEM/よりLatest version）
 
