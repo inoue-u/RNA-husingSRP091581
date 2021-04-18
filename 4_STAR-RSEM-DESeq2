@@ -49,9 +49,12 @@ df <- read.csv("../seq/SraRunTable.txt",stringsAsFactors=F)
 df2 <- data.frame(sample=df$Run, group=df$diseasestatus, path=paste0(df$Run, ".genes.results"))
 write.table(df2, "sample2condition.txt" ,row.names=F, quote=F, sep="\t")
 
+下の二つは初見の時
 install.packages("BiocManager")
 BiocManager::install("DESeq2")
 BiocManager::install("tximport")
+
+展開
 library(DESeq2)
 library(tximport)
 
