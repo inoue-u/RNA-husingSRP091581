@@ -52,7 +52,7 @@ DESeq2で処理＠Rコンソール、~/Documents/husingSRP091581/STARをcurrent 
 
 df <- read.csv("../seq/SraRunTable.txt",stringsAsFactors=F)
 df2 <- data.frame(sample=df$Run, group=df$source_name, path=paste0(df$Run, ".genes.results"))
-write.table(df2, "sample2condition.txt" ,row.names=F, quote=F, sep="\t")
+write.table(df2, "sample3condition.txt" ,row.names=F, quote=F, sep="\t")
 
 下の3つは初見の時
 install.packages("BiocManager")
