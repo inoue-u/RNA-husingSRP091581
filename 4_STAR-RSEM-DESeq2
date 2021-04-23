@@ -1,6 +1,7 @@
 ・ツール保存dirを作成
 
 $ mkdir ~/Documents/husingSRP091581/tools
+$ cd ~/Documents/husingSRP091581/tools
 
 ・STARをDL、展開
 
