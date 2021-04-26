@@ -13,8 +13,6 @@ $ tar -xzf 2.7.8a.tar.gz
 $ mkdir ~/Documents/husingSRP091581/ref/STAR_reference
 $ ~/Documents/husingSRP091581/tools/STAR-2.7.8a/bin/MacOSX_x86_64/STAR --runMode genomeGenerate --genomeDir ~/Documents/husingSRP091581/ref/STAR_reference --genomeFastaFiles ~/Documents/husingSRP091581/ref/Mus_musculus.GRCm39.dna.primary_assembly.fa --sjdbGTFfile ~/Documents/husingSRP091581/ref/Mus_musculus.GRCm39.103.gtf
 
-ここまでやった
-以下はこれから
 
 ・マッピング
 
@@ -64,7 +62,7 @@ library(DESeq2)
 library(tximport)
 
 サンプル情報を記載したリストを読み込む
-s2c <- read.table("sample2condition.txt", header=T, sep="\t", stringsAsFactors=F)
+s2c <- read.table("sample3condition.txt", header=T, sep="\t", stringsAsFactors=F)
 s2c$group <- gsub(" ", "_", s2c$group)
 
 RSEMの出力ファイルの読み込み
