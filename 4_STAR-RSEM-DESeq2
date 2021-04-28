@@ -126,7 +126,6 @@ dev.off()
 発現変動の大きな遺伝子を表示させる
 head(res_wt_naomit_annot_sort)
 
-以下原文
 FASN (ENSMUSG00000017316) という遺伝子の発現変動が大きかったので、この発現量をプロットする
 発現量を図示する
 plotCounts(dds, gene="ENSMUSG00000017316", intgroup="condition")
