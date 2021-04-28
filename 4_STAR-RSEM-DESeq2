@@ -62,18 +62,22 @@ library(DESeq2)
 library(tximport)
 
 サンプル情報を記載したリストを読み込む
-s2c <- read.table("sample3condition.txt", header=T, sep="\t", stringsAsFactors=F)
-s2c$group <- gsub(" ", "_", s2c$group)
+s3c <- read.table("sample3condition.txt", header=T, sep="\t", stringsAsFactors=F)
+s3c$group <- gsub(" ", "_", s2c$group)
 
 RSEMの出力ファイルの読み込み
-files <- s2c$path
-names(files) <- s2c$sample
+files <- s3c$path
+names(files) <- s3c$sample
 txi <- tximport(files, type="rsem", txIn=F, txOut=F)
 ここで
 でエラー: 
   all(file.exists(files)) is not TRUE
-
-
+  
+  著者である小巻先生にお聞きし、sample3condition.txtのpathが実在するファイルと名前が異なっていたためRstudioでそれを修正
+  
+  >txi <- tximport(files, type="rsem", txIn=F, txOut=F)
+reading in files with read.delim (install 'readr' package for speed up)
+1 2 3 4 5 6 
 
 txi$length[txi$length==0] <- 1
 
@@ -123,15 +127,15 @@ dev.off()
 head(res_wt_naomit_annot_sort)
 
 以下原文
-FASN (ENSG00000169710) という遺伝子の発現変動が大きかったので、この発現量をプロットする
+FASN (ENSMUSG00000017316) という遺伝子の発現変動が大きかったので、この発現量をプロットする
 発現量を図示する
-plotCounts(dds, gene="ENSG00000169710", intgroup="condition")
+plotCounts(dds, gene="ENSMUSG00000017316", intgroup="condition")
 保存する際はMA-plotと同様
-png("ENSG00000169710.png")
-plotCounts(dds, gene="ENSG00000169710", intgroup="condition")
+png("ENSMUSG00000017316.png")
+plotCounts(dds, gene="ENSMUSG00000017316", intgroup="condition")
 dev.off()
 自前で作図するためにデータのみを抽出したい場合は returnData=T を加える
-d <- plotCounts(dds, gene="ENSG00000169710", intgroup="condition", returnData=T)
+d <- plotCounts(dds, gene="ENSMUSG00000017316", intgroup="condition", returnData=T)
 
 
 
