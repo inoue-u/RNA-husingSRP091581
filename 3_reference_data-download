@@ -21,8 +21,11 @@ exit
 一応cdnaも
 
 ・Rコンソールを立ち上げ~/Documents/husingSRP091581/refのdirに移動
-対象種のDataset名を確認、対象種の遺伝子IDと遺伝子名の対応情報を取得
+biomaRtのinstall、対象種のDataset名を確認、対象種の遺伝子IDと遺伝子名の対応情報を取得
 
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install("biomaRt")
 library(dplyr)
 ensembl = biomaRt::useEnsembl(biomart="ensembl")
 biomaRt::listDatasets(ensembl)
