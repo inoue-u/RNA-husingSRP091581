@@ -49,7 +49,7 @@ $ for sample in `ls ../seq/*fastq.gz | xargs basename | cut -f1 -d"_" | uniq`; d
 DESeq2で処理＠Rコンソール、~/Documents/husingSRP091581/STARをcurrent dirに
 
 df <- read.csv("../seq/SraRunTable.txt",stringsAsFactors=F)
-df2 <- data.frame(sample=df$Run, group=df$source_name, path=paste0(df$Run, ".fastq.gz.genes.results"))
+df2 <- data.frame(sample=df$Run, group=df$source_name, path=paste0(df$Run, ".genes.results"))
 write.table(df2, "sample3condition.txt" ,row.names=F, quote=F, sep="\t")
 
 下の3つは初見の時
