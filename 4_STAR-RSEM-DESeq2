@@ -63,7 +63,7 @@ library(tximport)
 
 サンプル情報を記載したリストを読み込む
 s3c <- read.table("sample3condition.txt", header=T, sep="\t", stringsAsFactors=F)
-s3c$group <- gsub(" ", "_", s2c$group)
+s3c$group <- gsub(" ", "_", s3c$group)
 
 RSEMの出力ファイルの読み込み
 files <- s3c$path
